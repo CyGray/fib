@@ -1,0 +1,43 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # Trigger deployment on push to the main branch (adjust as needed)
+  pull_request:
+    branches:
+      - main  # Optionally trigger on PR to main as well
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout code from the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Set up Node.js environment
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'  # Specify the version of Node.js you're using
+
+      # Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Build and export the Next.js app
+      - name: Build and export Next.js app
+        run: |
+          npm run build
+          npm run export
+
+      # Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages  # The branch where your GitHub Pages site will be deployed
+          folder: out  # The folder containing your exported static files
+          token: ${{ secrets.GITHUB_TOKEN }}  # Automatically provided by GitHub Actions
+
