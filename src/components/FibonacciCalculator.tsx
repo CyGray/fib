@@ -37,11 +37,11 @@ const AuthorCredits = () => (
     <div className="bg-[#0C6478]/50 backdrop-blur-sm px-6 py-2 rounded-full border border-[#46DFB1]/20">
       <div className="flex items-center space-x-2 text-sm text-[#46DFB1]">
         <span className="opacity-75">by</span>
-        <span>yve arte</span>
+        <span>Diofel Gwen Haresco</span>
         <span className="opacity-75">&</span>
-        <span>aaron salles</span>
+        <span>Kyle Yuan Uy</span>
         <span className="opacity-75 mx-2">|</span>
-        <span>section x-y</span>
+        <span>BSCS 2-B</span>
       </div>
     </div>
   </div>
@@ -115,16 +115,6 @@ const CodeExplanation = () => {
                 </TooltipProvider>
               ))}
             </div>
-
-            <div className="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between text-sm text-slate-500">
-              <div className="flex items-center space-x-2">
-                <span>by</span>
-                <span className="text-slate-400">Kyle Yuan Uy</span>
-                <span>&</span>
-                <span className="text-slate-400">Diofel Gwen Haresco</span>
-              </div>
-              <div className="text-slate-400">BSCS 2-B</div>
-            </div>
           </div>
         </CollapsibleContent>
       </Collapsible>
@@ -183,7 +173,7 @@ export default function FibonacciCalculator() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#213A58] to-[#0C6478] p-4 flex items-center justify-center">
+    <div className="min-h-screen bg-gradient-to-b from-[#46DFB1] via-[#15919B] to-[#213A58] p-4 flex items-center justify-center">
       <Card className="w-full max-w-lg shadow-xl bg-[#213A58]/80 backdrop-blur-sm border-[#09D1C7]/20 transition-all duration-300 ease-in-out hover:shadow-2xl hover:shadow-[#46DFB1]/10">
         <CardHeader className="text-center space-y-4 relative">
           <TooltipProvider>
