@@ -4,7 +4,7 @@ import { useState, useMemo } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { AlertCircle, CodeIcon, ChevronDown, ChevronUp } from 'lucide-react';
+import { AlertCircle, CodeIcon, ChevronDown, ChevronUp, InfoIcon } from 'lucide-react';
 import {
   Tooltip,
   TooltipContent,
@@ -31,6 +31,21 @@ const initialMemo: Record<number, bigint> = {
   9: 34n,
   10: 55n
 };
+
+const AuthorCredits = () => (
+  <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 text-center">
+    <div className="bg-[#0C6478]/50 backdrop-blur-sm px-6 py-2 rounded-full border border-[#46DFB1]/20">
+      <div className="flex items-center space-x-2 text-sm text-[#46DFB1]">
+        <span className="opacity-75">by</span>
+        <span>yve arte</span>
+        <span className="opacity-75">&</span>
+        <span>aaron salles</span>
+        <span className="opacity-75 mx-2">|</span>
+        <span>section x-y</span>
+      </div>
+    </div>
+  </div>
+);
 
 const CodeExplanation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -168,13 +183,37 @@ export default function FibonacciCalculator() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 p-4 flex items-center justify-center">
-      <Card className="w-full max-w-lg shadow-xl bg-slate-950 border-slate-800 transition-all duration-300 ease-in-out hover:shadow-2xl hover:shadow-blue-500/10">
-        <CardHeader className="text-center space-y-2">
-          <CardTitle className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent animate-fade-in">
-            Fibonacci Calculator
-          </CardTitle>
-          <p className="text-slate-400 animate-slide-up">
+    <div className="min-h-screen bg-gradient-to-b from-[#213A58] to-[#0C6478] p-4 flex items-center justify-center">
+      <Card className="w-full max-w-lg shadow-xl bg-[#213A58]/80 backdrop-blur-sm border-[#09D1C7]/20 transition-all duration-300 ease-in-out hover:shadow-2xl hover:shadow-[#46DFB1]/10">
+        <CardHeader className="text-center space-y-4 relative">
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <div className="cursor-help">
+                  <div className="absolute top-2 right-2 text-[#46DFB1] opacity-50 hover:opacity-100 transition-opacity">
+                    <InfoIcon size={20} />
+                  </div>
+                  <CardTitle className="space-y-2">
+                    <div className="text-4xl font-extrabold text-[#80EE98]">
+                      Fibonacci
+                    </div>
+                    <div className="text-2xl font-medium text-[#46DFB1]">
+                      Calculator
+                    </div>
+                  </CardTitle>
+                </div>
+              </TooltipTrigger>
+              <TooltipContent className="max-w-sm bg-[#0C6478] border-[#09D1C7]/30">
+                <div className="p-3 text-center">
+                  <p className="text-[#80EE98] font-medium mb-2">Fibonacci Sequence Formula</p>
+                  <p className="text-[#46DFB1]">F(n) = F(n-1) + F(n-2)</p>
+                  <p className="text-sm text-[#46DFB1]/80 mt-2">where F(0) = 0 and F(1) = 1</p>
+                </div>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+          
+          <p className="text-[#46DFB1]/80">
             Enter a number to find its Fibonacci value
           </p>
         </CardHeader>
@@ -186,7 +225,7 @@ export default function FibonacciCalculator() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Enter a non-negative integer"
-              className="text-lg bg-slate-900 border-slate-700 text-slate-100 placeholder:text-slate-500"
+              className="text-lg bg-[#0C6478]/50 border-[#09D1C7]/30 text-[#80EE98] placeholder:text-[#46DFB1]/50"
               min="0"
               onKeyPress={(e) => {
                 if (e.key === 'Enter') handleCalculate();
@@ -194,7 +233,7 @@ export default function FibonacciCalculator() {
             />
             <Button 
               onClick={handleCalculate}
-              className={`bg-blue-600 hover:bg-blue-500 text-white px-6 transition-all duration-300 ${
+              className={`bg-[#09D1C7] hover:bg-[#46DFB1] text-[#213A58] font-medium px-6 transition-all duration-300 ${
                 isCalculating ? 'animate-pulse' : ''
               }`}
               disabled={isCalculating}
@@ -212,16 +251,16 @@ export default function FibonacciCalculator() {
 
           {result !== null && !error && (
             <div 
-              className={`p-4 bg-slate-900 rounded-lg border border-slate-700 transition-all duration-500 ease-out ${
+              className={`p-4 bg-[#0C6478]/50 rounded-lg border border-[#09D1C7]/30 transition-all duration-500 ease-out ${
                 isResultVisible ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-4'
               }`}
             >
-              <p className="text-sm text-blue-400 mb-1">Result:</p>
-              <p className="text-xl font-mono break-all text-slate-100">{result}</p>
+              <p className="text-sm text-[#46DFB1] mb-1">Result:</p>
+              <p className="text-xl font-mono break-all text-[#80EE98]">{result}</p>
             </div>
           )}
 
-          <div className="text-sm text-slate-400 mt-4 space-y-2 animate-fade-in">
+          <div className="text-sm text-[#46DFB1]/80 mt-4 space-y-2 animate-fade-in">
             <p>This calculator uses recursion with memoization for efficient computation.</p>
             <p>The first 10 Fibonacci numbers are pre-computed for instant results.</p>
           </div>
@@ -229,6 +268,8 @@ export default function FibonacciCalculator() {
           <CodeExplanation />
         </CardContent>
       </Card>
+
+      <AuthorCredits />
     </div>
   );
 }
