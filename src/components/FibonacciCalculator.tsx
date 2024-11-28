@@ -223,7 +223,7 @@ export default function FibonacciCalculator() {
             />
             <Button 
               onClick={handleCalculate}
-              className={`bg-[#09D1C7] hover:bg-[#46DFB1] text-[#213A58] font-medium px-6 transition-all duration-300 ${
+              className={`bg-[#09D1C7]/50 hover:bg-[#46DFB1] text-[#213A58] font-medium px-6 transition-all duration-300 ${
                 isCalculating ? 'animate-pulse' : ''
               }`}
               disabled={isCalculating}
@@ -241,12 +241,12 @@ export default function FibonacciCalculator() {
 
           {result !== null && !error && (
             <div 
-              className={`p-4 bg-[#0C6478]/50 rounded-lg border border-[#09D1C7]/30 transition-all duration-500 ease-out ${
+              className={`p-4 bg-[#09D1C7] rounded-lg border border-[#09D1C7]/30 transition-all duration-500 ease-out ${
                 isResultVisible ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-4'
               }`}
             >
-              <p className="text-sm text-[#46DFB1] mb-1">Result:</p>
-              <p className="text-xl font-mono break-all text-[#80EE98]">{result}</p>
+              <p className="text-sm text-[#0c6478] mb-1">Result:</p>
+              <p className="text-xl font-mono break-all text-[#213A58]">{result}</p>
             </div>
           )}
 
